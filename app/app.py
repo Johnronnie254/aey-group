@@ -12,6 +12,11 @@ migrate= Migrate(app,db)
 CORS(app)
 db.init_app(app)
 
+#dashboard
+@app.route('/')
+def dashboard():
+    return f'Welcome to our book store'
+
 #GET /books/ - Returns a list of books in the database
 @app.route('/books', methods=['GET'])
 def get_books():
@@ -21,7 +26,13 @@ def get_books():
             "id": book.id,
             "book_name": book.book_name,
             "ISBN": book.ISBN,
-            "author": book.author,
+            "author": {
+                "id": book.author.id,
+                "name": book.author.name,
+                "age": book.author.age,
+                "country": book.author.country,
+                "book_genre": book.author.book_genre,
+            },
         }
         for book in books
     ]
@@ -120,6 +131,10 @@ def create_book():
     db.session.commit()
 
     return jsonify({'message': 'The book has been successfully created'}), 201
+
+
+if __name__=='__main__':
+    app.run(debug=True)
 
 
     

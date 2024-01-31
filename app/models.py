@@ -19,7 +19,8 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     book_name = db.Column(db.String, nullable=False, unique=True)
     ISBN = db.Column(db.String, nullable=False)
-    author = db.Column(db.String, nullable=False)
+    author_id = db.Column(db.Integer, db.ForeignKey('authors.id'), nullable=False)
+    author = db.relationship('Author', backref='books')
 
     def __repr__(self):
         return f'<Book(id={self.id}, book_name={self.book_name}, ISBN={self.ISBN}, author={self.author})>'
