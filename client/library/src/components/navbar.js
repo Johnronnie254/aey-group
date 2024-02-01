@@ -19,7 +19,13 @@ function Navbar() {
               <Link className="nav-link" to="/books">Books</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/authors">Authors</Link>
+              <Link className="nav-link" to="/Authors">Authors</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/AddBook">Add Book</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/AddAuthor">Add Author</Link>
             </li>
           </ul>
         </div>
