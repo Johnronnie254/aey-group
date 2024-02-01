@@ -1,10 +1,8 @@
-// Book.js
 import React, { useState, useEffect } from 'react';
-import MyBooks from './MyBooks';
+import { Link } from 'react-router-dom';
 
 function Book() {
   const [books, setBooks] = useState([]);
-  const [myBooks, setMyBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,32 +25,6 @@ function Book() {
     fetchData();
   }, []);
 
-  const addToMyBooks = (book) => {
-    setMyBooks([...myBooks, book]);
-    // Update the number of books in the store
-    setBooks((prevBooks) =>
-      prevBooks.map((prevBook) =>
-        prevBook.id === book.id
-          ? { ...prevBook, numBooksInStore: prevBook.numBooksInStore - 1 }
-          : prevBook
-      )
-    );
-  };
-
-  const removeFromMyBooks = (bookToRemove) => {
-    setMyBooks((prevMyBooks) =>
-      prevMyBooks.filter((prevBook) => prevBook.id !== bookToRemove.id)
-    );
-    // Update the number of books in the store
-    setBooks((prevBooks) =>
-      prevBooks.map((prevBook) =>
-        prevBook.id === bookToRemove.id
-          ? { ...prevBook, numBooksInStore: prevBook.numBooksInStore + 1 }
-          : prevBook
-      )
-    );
-  };
-
   return (
     <div>
       <h2>Book List</h2>
@@ -62,26 +34,26 @@ function Book() {
         <div className="row">
           {books.map((book) => (
             <div key={book.id} className="col-md-4 mb-4">
-              <div className="card" onClick={() => addToMyBooks(book)}>
-                <div className="card-body">
-                  <h5 className="card-title">{book.book_name}</h5>
-                  <p className="card-text">
-                    <strong>Author:</strong> {book.author.name}<br />
-                    <strong>ISBN:</strong> {book.ISBN}<br />
-                    <strong>No. of Books:</strong> {book.numBooksInStore}
-                  </p>
-                  <button className="btn btn-primary">
-                    Add to My Books
-                  </button>
+              <Link to={`/book/${book.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <div className="card">
+                  <div className="card-body">
+                    <img
+                      src='https://i.pinimg.com/564x/12/44/c7/1244c7b3eb6748c34fab1d3b569539e5.jpg'
+                      alt={book.book_name}
+                      className="img-fluid rounded"
+                      style={{ maxWidth: '50%', height: 'auto' }}
+                    />
+                    <h5 className="card-title">Book: {book.book_name}</h5>
+                    <p className="card-text">
+                      <strong>Author:</strong> {book.author.name}<br />
+                      <strong>ISBN:</strong> {book.ISBN}<br />
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
-            
           ))}
         </div>
-      )}
-      {myBooks.length > 0 && (
-        <MyBooks myBooks={myBooks} removeFromMyBooks={removeFromMyBooks} />
       )}
     </div>
   );

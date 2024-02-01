@@ -22,10 +22,16 @@ function Navbar() {
               <Link className="nav-link" to="/Authors">Authors</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/AddBook">Add Book</Link>
+              <Link className="nav-link" to="/Book">Add Book</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/AddAuthor">Add Author</Link>
+              <Link className="nav-link" to="/Author">Add Author</Link>
+            </li>
+             <li className="nav-item">
+              <Link className="nav-link" to="/Authors/:id">AuthorId</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Book/:id">BookId</Link>
             </li>
           </ul>
         </div>

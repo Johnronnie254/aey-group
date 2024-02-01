@@ -9,6 +9,8 @@ import AboutUs from './components/Aboutus';
 import Author from './components/Authors';
 import AddAuthor from './components/AddAuthor';
 import AddBook from './components/AddBook';
+import AuthorId from './components/AuthorId';
+import BookId from './components/BookId';
 
 
 
@@ -22,8 +24,10 @@ function App() {
           <Route path="/books" element={<Book />} />
           <Route path="/Aboutus" element = {<AboutUs/>} />
           <Route path="/Authors" element = {<Author/>} />
-          <Route path="/AddAuthor" element = {<AddAuthor/>} />
-          <Route path="/AddBook" element = {<AddBook/>} />
+          <Route path="/Author" element = {<AddAuthor/>} />
+          <Route path="/Book" element = {<AddBook/>} />
+          <Route path="/Authors/:id" element = {<AuthorId/>} />
+          <Route path="/Book/:id" element = {<BookId/>} />
         </Routes>
       </div>
     </Router>

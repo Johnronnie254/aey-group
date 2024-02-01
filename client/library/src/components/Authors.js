@@ -22,6 +22,7 @@ export default function Author() {
             <img src="https://cdn.pixabay.com/photo/2017/07/18/23/23/user-2517433_1280.png" class="card-img-top" alt="..." style={{height:"150px"}}/>
            <div class="card-body">
              <h5 class="card-title">Name: {author.name}</h5>
+             <h5 class="card-title">Age: {author.age}</h5>
              <p class="card-text">Genre: {author.book_genre}</p>
            </div>
         </div>
