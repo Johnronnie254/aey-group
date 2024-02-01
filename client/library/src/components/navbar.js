@@ -1,32 +1,26 @@
 // Navbar.js
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">AEY GROUP</a>
+        <Link className="navbar-brand" to="/">AEY GROUP</Link>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto"> {/* "ms-auto" pushes items to the right */}
+          <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
+              <Link className="nav-link" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">About Us</a>
+              <Link className="nav-link" to="/Aboutus">About Us</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Our Books</a>
+              <Link className="nav-link" to="/books">Books</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Authors</a>
+              <Link className="nav-link" to="/authors">Authors</Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Blog</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Users</a>
-            </li>
-            
           </ul>
         </div>
       </div>
