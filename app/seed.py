@@ -21,8 +21,8 @@ def seed_database():
         db.session.commit()
 
         books_data = [
-            {'book_name': fake.word(), 'ISBN': fake.random_int(1000000000, 9999999999), 'author_id': random.randint(1, 10),
-             'cover_image_url': fake.image_url(), 'num_books_in_store': fake.random_int(1, 100)}
+            {'book_name': fake.word(), 'ISBN': fake.random_int(1000000000, 9999999999), 
+             'numBooksInStore': fake.random_int(1, 100), 'author_id': random.randint(1, 10)}
             for _ in range(10)
         ]
 
