@@ -1,14 +1,17 @@
+import random
+from faker import Faker
 from app import app, db
 from models import Author, Book
 
+fake = Faker()
+
 def seed_database():
-  
     with app.app_context():
         db.create_all()
 
         authors_data = [
-            {'name': 'Author 1', 'age': '30', 'country': 'Country 1', 'book_genre': 'Genre 1'},
-            {'name': 'Author 2', 'age': '25', 'country': 'Country 2', 'book_genre': 'Genre 2'},
+            {'name': fake.name(), 'age': fake.random_int(20, 80), 'country': fake.country(), 'book_genre': fake.word()}
+            for _ in range(10)
         ]
 
         for author_info in authors_data:
@@ -18,8 +21,9 @@ def seed_database():
         db.session.commit()
 
         books_data = [
-            {'book_name': 'Book 1', 'ISBN': '123456789', 'author_id': 1},
-            {'book_name': 'Book 2', 'ISBN': '987654321', 'author_id': 2},
+            {'book_name': fake.word(), 'ISBN': fake.random_int(1000000000, 9999999999), 'author_id': random.randint(1, 10),
+             'cover_image_url': fake.image_url(), 'num_books_in_store': fake.random_int(1, 100)}
+            for _ in range(10)
         ]
 
         for book_info in books_data:

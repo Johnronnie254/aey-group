@@ -45,7 +45,7 @@ def get_books():
 
 @app.route('/book/<int:id>', methods=['GET'])
 def get_book(id):
-    book = Book.query.filter_by(id).first()
+    book = Book.query.filter_by(id=id).first()
     if book is None:
         return jsonify({'error': 'Unfortunately the book you are looking for is unavailable'}), 404
     else:
@@ -53,7 +53,13 @@ def get_book(id):
             "id": book.id,
             "book_name": book.book_name,
             "ISBN": book.ISBN,
-            "author": book.author,
+            "author": {
+                "id": book.author.id,
+                "name": book.author.name,
+                "age": book.author.age,
+                "country": book.author.country,
+                "book_genre": book.author.book_genre,
+            },
         }), 200
 
 #GET /authors/ - Returns a list of authors in the database
@@ -135,6 +141,4 @@ def create_book():
 
 if __name__=='__main__':
     app.run(debug=True)
-
-
-    
+   
