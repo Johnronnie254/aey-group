@@ -6,7 +6,6 @@ export default function AddBook({handleNewBook}) {
     const [input, setInput] = useState({
         book_name:"",
         ISBN:" ",
-        author:" "
     })
     const handleInput = (e)=>{
         const { name, value } = e.target;
@@ -21,10 +20,9 @@ export default function AddBook({handleNewBook}) {
         const item= {
             book_name: input.book_name,
             ISBN: input.ISBN,
-            author: input.author,
            
         };
-        fetch("",{
+        fetch("http://127.0.0.1:5000/book",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"
@@ -36,7 +34,6 @@ export default function AddBook({handleNewBook}) {
         setInput({
             book_name:"",
             ISBN:" ",
-            author:" "
         })
         alert("Book added successfully!");
         navigate("/books")

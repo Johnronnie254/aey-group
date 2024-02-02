@@ -1,19 +1,16 @@
 import React,{useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+
 
 export default function Author() {
     const [authors, setAuthors] = useState([])
-    const navigate = useNavigate()
-
+  
     useEffect(() =>{
         fetch("http://127.0.0.1:5000/authors")
         .then((r) => r.json())
         .then(data => setAuthors(data))
     },[])
 
-    function handleClick(){
-      navigate("/add_author")
-    }
+   
 
   return (
     <div className='cards'>
@@ -27,7 +24,7 @@ export default function Author() {
            </div>
         </div>
         ))}
-       <button style={{backgroundColor:"#43c6db", marginLeft:"50%"}}type="button" class="btn" onClick={handleClick}>Add Author</button>
+       
     </div>
   )
 }

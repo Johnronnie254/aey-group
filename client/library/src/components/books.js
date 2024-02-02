@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Book() {
   const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -17,9 +16,7 @@ function Book() {
         setBooks(data);
       } catch (error) {
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
+      } 
     };
 
     fetchData();
@@ -28,9 +25,6 @@ function Book() {
   return (
     <div>
       <h2>Book List</h2>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
         <div className="row">
           {books.map((book) => (
             <div key={book.id} className="col-md-4 mb-4">
@@ -54,7 +48,7 @@ function Book() {
             </div>
           ))}
         </div>
-      )}
+      )
     </div>
   );
 }
