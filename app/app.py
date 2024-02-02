@@ -127,7 +127,7 @@ def create_book():
 
     book_name = data.get('book_name')
     ISBN = data.get('ISBN')
-    author = data.get( 'author')
+    
 
     if not book_name or not ISBN or not author:
         return jsonify({'error': 'book name, ISBN and author details required'}), 400
